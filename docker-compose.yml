@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: wuda-postgres
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - wuda_pgdata:/var/lib/postgresql/data
+
+volumes:
+  wuda_pgdata:

@@ -24,5 +24,10 @@ python3 -m venv .venv
 .venv/Scripts/activate
 ```
 W zależności czy bash, cmd, powershell czy inny chłam, opdalasz inny plik.
+Następnym krokiem jest uruchomienie bazy danych posrgres. W tym celu przygotowano docker-compose.yml. W przyszłości ten plik będzie obsługiwał inicjalizację wszystkiego kekw.
+Potem:
 
-
+```
+python3 manage.py migrate
+python3 manage.py runserver
+```
