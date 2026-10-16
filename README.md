@@ -8,8 +8,8 @@ W tym celu wykorzystano najnowszą wersję [Django](https://www.djangoproject.co
 
 ### Todo
 
-* Przygotować środowisko i zaktualizować niezbędne technologie.
-  1. Czytaj przygotować req.txt
+* ~Przygotować środowisko i zaktualizować niezbędne technologie.~
+  1. ~Czytaj przygotować req.txt~
 * Przygotować dockerfile i docker-compose z postgresikiem.
   * Napisać potok github actions do tworzenia i udostępniania obrazu.
 * Przygotować kod na produkcje
