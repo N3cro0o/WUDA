@@ -1,3 +1,7 @@
+"""
+Main app routing module
+"""
+
 from django.urls import path
 
 from . import views

@@ -1,3 +1,5 @@
+"""Test module for polls"""
+
 import datetime
 
 from django.urls import reverse
@@ -8,7 +10,7 @@ from .models import Question
 
 
 class QuestionModelTests(TestCase):
-
+    """Test class for QuestionModel"""
     def test_was_published_recently_with_future_question(self):
         """
         was_published_recently() returns False for questions whose pub_date
@@ -26,7 +28,7 @@ class QuestionModelTests(TestCase):
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
         self.assertIs(old_question.was_published_recently(), False)
-    
+
     def test_was_published_recently_with_recent_question(self):
         """
         was_published_recently() returns True for questions whose pub_date
@@ -44,10 +46,11 @@ def create_question(question_text, days):
     in the past, positive for questions that have yet to be published).
     """
     time = timezone.now() + datetime.timedelta(days=days)
-    return Question.objects.create(question_text=question_text, pub_date=time)
+    return Question(question_text=question_text, pub_date=time)
 
 
 class QuestionIndexViewTests(TestCase):
+    """Test class for checking Question View"""
     def test_no_questions(self):
         """
         If no questions exist, an appropriate message is displayed.
@@ -106,6 +109,7 @@ class QuestionIndexViewTests(TestCase):
 
 
 class QuestionDetailViewTests(TestCase):
+    """Test class for checking Question detail"""
     def test_future_question(self):
         """
         The detail view of a question with a pub_date in the future
