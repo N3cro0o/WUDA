@@ -18,10 +18,16 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Check if testing is in progress
+TESTING = "test" in sys.argv or any("pytest" in arg for arg in sys.argv)
+
 load_dotenv()
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
+if TESTING:
+    SECRET_KEY = "dummy dum dum"
+else:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 if not SECRET_KEY:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY must not be empty.")
 
@@ -93,8 +99,7 @@ DATABASES = {
     }
 }
 
-testing = "test" in sys.argv or any("pytest" in arg for arg in sys.argv)
-if testing:
+if TESTING:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
