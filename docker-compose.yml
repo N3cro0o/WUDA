@@ -10,7 +10,8 @@ services:
       - wuda_pgdata:/var/lib/postgresql/data
 
   django:
-    build: .
+    #build: .
+    image: ghcr.io/n3cro0o/wuda:master 
     command: python -m uvicorn mysite.asgi:application --host 0.0.0.0 --port 8000 --workers 2
     ports:
       - "8000:8000"
